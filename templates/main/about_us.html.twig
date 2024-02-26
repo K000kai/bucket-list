@@ -2,8 +2,19 @@
 
 {% block body %}
   <h2>About US</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis commodi deleniti doloribus, ducimus eaque excepturi expedita incidunt inventore libero molestias obcaecati odit quas quibusdam repellat rerum temporibus vel velit vitae.</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex nihil omnis sed. Ad atque cupiditate exercitationem illum in ipsum iste necessitatibus officia, omnis reiciendis veritatis vero. Officiis quam repellat veritatis!</p>
+    <section class="teamMember">
+        {% for member in teamMembers %}
+        <article>
+            <img src="{{ member.picture }}" alt="{{ member.lastname }}">
+            <div>
+                <h3>{{ member.firstname }} {{ member.lastname }} {{ member.firstname == "Fabien" ? "&#128151" : ""}}</h3>
+                <p> Creator of {{ member.creatorOf }}</p>
+                <p> Date of birth {{ member.dateOfBirth | date('d-m-Y') }}</p>
+                <p> {{ member.description }}</p>
+            </div>
+        </article>
+        {% endfor %}
+    </section>
 {% endblock %}
 
 {% block title %}
