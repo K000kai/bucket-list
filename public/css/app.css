@@ -1,0 +1,22 @@
+header{
+    background-color: burlywood;
+}
+
+body{
+    background-color: bisque;
+}
+
+.fixed-bottom{
+    background-color: rosybrown;
+}
+
+header img {
+    height: 70px;
+}
+header h1{
+    margin: 0 0 10px 0;
+}
+header a{
+    text-decoration: none;
+    color: inherit;
+}
