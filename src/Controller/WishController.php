@@ -13,19 +13,18 @@ class WishController extends AbstractController
 {
     #[Route('/wishes', name: 'wish_list')]
     public function list(WishRepository $repository): Response{
-
+        //On stock les wishes dans une variable
         $wishes= $repository->findAll();
-
-        //todo : aller chercher les souhaits
 
         return $this->render('wish/list_wish.html.twig',[
             'wishes'=>$wishes
         ]);
     }
     #[Route('/wishes/details/{id}',name:'wish_details')]
-    public function details(int $id): Response {
-        //todo: allez chercher le wish en BDD
-        return $this->render('wish/details.html.twig');
+    public function details(int $id,WishRepository $repository): Response {
+        $wish=$repository->find($id);
+        return $this->render('wish/details.html.twig',[
+            'wish'=>$wish ]);
     }
 
 }
