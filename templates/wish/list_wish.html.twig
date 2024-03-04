@@ -5,16 +5,23 @@
 {% endblock %}
 
 {% block body %}
-    <section class="wishes-list">
-        <h3>All Wishes !</h3>
-    {% for wish in wishes %}
-      <div class="align-items-center">
-          <article>
-              <a href="{{ path('wish_details',{id: wish.id}) }}">{{ wish.title }}</a>
-          </article>
-      </div>
 
-    {% endfor %}
-
-    </section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12  text-center">
+                <h3>All Wishes !</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                {% for wish in wishes %}
+                    <div class="align-items-center">
+                        <article>
+                            <a class="link-offset-2 link-underline link-underline-opacity-0" href="{{ path('wish_details',{id: wish.id}) }}">{{ wish.title }}</a>
+                        </article>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
