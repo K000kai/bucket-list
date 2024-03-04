@@ -18,32 +18,11 @@
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
 </head>
 <body>
+    <div class="container">
+        {% include 'partials/flash_messages.html.twig' %}
+    </div>
     <header>
-        <div class="container">
-            <div class="row ">
-                <h1>
-                    <a href="{{ path('main_home') }}">
-                        <img src="{{ asset('img/logo.svg') }}" alt="Bucket-List"> Bucket-List
-                    </a>
-                </h1>
-            <div class="row align-items-center">
-               <div class="col">
-                   <a href="{{ path('main_home') }}" title="Go_Home">Home</a>
-               </div>
-                <div class="col">
-                    <a href="{{ path('wish_list') }}" title="All Wishes">All Wishes</a>
-                </div>
-                <div class="col">
-                    <a href="" title="About Us">Add wish</a>
-                </div>
-               <div class="col">
-                   <a href="{{ path('main_about_us') }}" title="About Us">About Us</a>
-               </div>
-            </div>
-
-            </div>
-        </div>
-
+    {% include 'partials/header.html.twig' %}
     </header>
     <main>
         {% block body %}

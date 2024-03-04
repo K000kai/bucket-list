@@ -17,7 +17,13 @@
                 {% for wish in wishes %}
                     <div class="align-items-center">
                         <article>
-                            <a class="link-offset-2 link-underline link-underline-opacity-0" href="{{ path('wish_details',{id: wish.id}) }}">{{ wish.title }}</a>
+                            <a class="link-offset-2 link-underline link-underline-opacity-0"
+                               href="{{ path('wish_details',{id: wish.id}) }}"
+                                title="view_wish_detail">
+                                {{ wish.title }}
+                            </a>
+                            <br>
+                            <p>Category : {{ wish.category.name }}</p>
                         </article>
                     </div>
                 {% endfor %}
