@@ -2,16 +2,20 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 class MainController extends AbstractController
 {
     #[Route('/', name: 'main_home')]
-    public function home():Response
+    public function home(Request $request, EntityManagerInterface $entityManager,UserPasswordHasherInterface $hasher):Response
     {
-       return $this->render('main/home.html.twig');
+        return $this->render('main/home.html.twig');
     }
 
     #[Route('/about-us', name:'main_about_us')]

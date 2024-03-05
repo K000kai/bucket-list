@@ -6,17 +6,18 @@ namespace App\Controller;
 use App\Entity\Wish;
 use App\Form\WishType;
 use App\Repository\WishRepository;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class WishController extends AbstractController
 {
     #[Route('/wishes', name: 'wish_list')]
     public function list(WishRepository $repository): Response{
+
         //On stock les wishes dans une variable
         $wishes= $repository->findPublishesWishesWithCategory();
 
@@ -36,7 +37,12 @@ class WishController extends AbstractController
     }
 
     #[Route('/wishes/create',name:'wish_create')]
+    #[IsGranted('ROLE_USER')]
     public function create(Request $request, EntityManagerInterface $entityManager): Response{
+
+
+
+
         $wish = new Wish();
         $form = $this->createForm(WishType::class,$wish);
         $form -> handleRequest($request);
