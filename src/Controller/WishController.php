@@ -38,7 +38,7 @@ class WishController extends AbstractController
     }
 
     #[Route('/wishes/create',name:'wish_create')]
-    #[IsGranted('ROLE_USER')]
+    #[IsGranted('ROLE_VERIFIED',message: 'You need to validate your Email Confirmation')]
 
     public function create(Request $request, EntityManagerInterface $entityManager): Response{
 
