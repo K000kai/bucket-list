@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 
+use App\Entity\User;
 use App\Entity\Wish;
 use App\Form\WishType;
 use App\Repository\WishRepository;
@@ -38,12 +39,12 @@ class WishController extends AbstractController
 
     #[Route('/wishes/create',name:'wish_create')]
     #[IsGranted('ROLE_USER')]
+
     public function create(Request $request, EntityManagerInterface $entityManager): Response{
 
-
-
-
         $wish = new Wish();
+        $currentUserUsername = $this->getUser()->getUsername();
+        $wish->setAuthor($currentUserUsername);
         $form = $this->createForm(WishType::class,$wish);
         $form -> handleRequest($request);
 

@@ -5,6 +5,8 @@ header{
 body{
     background-color: bisque;
     font-family: 'Asul', sans-serif;
+    padding: 10px;
+    margin: 20px;
 }
 
 .fixed-bottom{
